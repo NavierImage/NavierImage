@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @NavierImage
+- 👋 Hi, I’m @Na
 - 👀 I’m interested in ... Deep Learning
 - 🌱 I’m currently learning ... Medical physics, Mechanical Engineering
 - 💞️ I’m looking to collaborate on ...
