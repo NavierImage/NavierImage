@@ -38,7 +38,7 @@ def contour_name_labeling(rtst_dcm, ctr_idx, ctr_z_idx_list):
 
 assert rtst_dir_list == ct_dir_list
 
-for file_idx in range(len(ct_dir_list)):
+for file_idx in range(1, len(ct_dir_list)):
     ct_dcm_path = os.path.join(ct_basepath, ct_dir_list[file_idx], "DCMData")
     ct_dcm_dir_list = os.listdir(ct_dcm_path)
     dcm_list = []
@@ -64,7 +64,7 @@ for file_idx in range(len(ct_dir_list)):
     labeling_dict = {"Liver":1, "Kidney_L":2, "Kidney_R" :3,"Duodenum": 4, "Stomach" :5, "Spleen" :6, "Pancreas" :7, "Gallbladder":8}
     
     
-    
+    print(ct_dir_list[file_idx])
     print(file_idx)
     for i in range(ctr_idx):
         target_name = name_dict_rev[i+1]
@@ -89,8 +89,11 @@ for file_idx in range(len(ct_dir_list)):
                 poly_r_list.append(co_con_arr[1])
                 poly_c_list.append(co_con_arr[0])
             row_poly_coord, col_poly_coord = draw.polygon(poly_r_list, poly_c_list)
-            
-            ctr_arr[co_con_arr[2], row_poly_coord, col_poly_coord] = 1
+            try:
+                ctr_arr[co_con_arr[2], row_poly_coord, col_poly_coord] = 1
+            except:
+                len(ctr_arr)
+                print(co_con_arr[2])
         la_sitk = sitk.GetImageFromArray(ctr_arr)
         la_sitk.SetSpacing(spacing.astype(np.double))
         la_sitk.SetOrigin(origin.astype(np.double))

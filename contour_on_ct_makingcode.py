@@ -88,7 +88,7 @@ for idx in range(1):
     im_arr = im_arr.astype("uint8")
     
     im_arr = np.stack((im_arr ,) * 3, axis = -1)
-    rt_arr = filling_contour(rt_arr)
+    # rt_arr = filling_contour(rt_arr)
     # rt_arr = get_only_line_from_label(rt_arr)
     contour_coords = np.where(rt_arr == 1)
     im_arr[contour_coords[0], contour_coords[1], contour_coords[2], :] = [255, 255, 0]
